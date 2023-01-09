@@ -70,8 +70,9 @@ def word_prompt():
     wf.writeframes(b''.join(frames))
     wf.close()
     
+    data_package = container.read()
      #Transcription
-    result = model.transcribe(container, fp16=True)
+    result = model.transcribe(data_package, fp16=True)
     answer = result["text"]
 
     disallowed_characters = " ._!-"
