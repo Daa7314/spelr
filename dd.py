@@ -97,18 +97,21 @@ N = len(ft)
 Sum = 0
 
 # This loop will run forever
-while True:
-    
-    print(f"The {Sum} word is {ft[Sum]}")
-    #the time alloted to spell is a function of the length of the word plus 1 sec
-    time = len(ft[Sum]) + 1
-    text = ft[Sum]
-    word_prompt()
-    Sum += 1
-    #print(time)
-    # the below condition will tell
-    # the loop to stop
-    if N == Sum:
-        break
+
+def spell():
+    while True:
+        print(f"The {Sum} word is {ft[Sum]}")
+        #the time alloted to spell is a function of the length of the word plus 1 sec
+        time = len(ft[Sum]) + 1
+        text = ft[Sum]
+        word_prompt()
+        Sum += 1
+        #print(time)
+        # the below condition will tell
+        # the loop to stop
+        if N == Sum:
+            break
+if st.button('spell'):
+    spell()
 # print()
 # print(f"All {N} items have been printed")
