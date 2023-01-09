@@ -7,6 +7,7 @@ import pyaudio
 import wave
 import time
 import streamlit as st
+import io
 
 #Streamlit decorations
 st.title('Spelling Help')
@@ -30,7 +31,7 @@ p = pyaudio.PyAudio()
 #Text to speech model initialization
 engine = pyttsx3.init()
 #Instructions
-
+container = io.BytesIO()
 
 def word_prompt():
     
@@ -62,7 +63,7 @@ def word_prompt():
     p.terminate()
 
 
-    wf = wave.open("output.wav", 'wb')
+    wf = wave.open(container, 'wb')
     wf.setnchannels(CHANNELS)
     wf.setsampwidth(p.get_sample_size(FORMAT))
     wf.setframerate(RATE)
@@ -70,7 +71,7 @@ def word_prompt():
     wf.close()
     
      #Transcription
-    result = model.transcribe("output.wav", fp16=True)
+    result = model.transcribe(container, fp16=True)
     answer = result["text"]
 
     disallowed_characters = " ._!-"
