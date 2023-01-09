@@ -8,3 +8,6 @@ SpeechRecognition==3.9.0
 streamlit==1.16.0
 torch==1.13.1
 whisper==1.0
+portaudio19-dev
+python-pyaudio
+python3-pyaudio
